@@ -31,9 +31,6 @@ router.post('/signup', (req, res, next) => {
       res.render('auth/signup.hbs', {error: 'Please enter Minimum eight characters, at least one letter and one number for your password'})
       return;
     }
-
-    
-
     
     // Encryption
 
@@ -59,16 +56,7 @@ router.get('/signin', (req, res, next) => {
 router.post('/signin', (req, res, next) => {
     const {username, password} = req.body
     
-    //DO Validations First
-
-    // Find the user email
-    // UserModel.find({email})
-    //   .then((emailResponse) => {
-    //       // if the email exists check the password
-    //       if (emailResponse.length) {
-    //           //bcrypt decryption 
-    //           let userObj = emailResponse[0]
-
+    
               // check if password matches
               let isMatching = bcrypt.compareSync(password, userObj.password);
               if (isMatching) {
@@ -82,15 +70,7 @@ router.post('/signin', (req, res, next) => {
                 res.render('auth/signin.hbs', {error: 'Password not matching'})
                 return;
               }
-          // }
-          // else {
-          //   res.render('auth/signin.hbs', {error: 'User email does not exist'})
-          //   return;
-          // }
-      // })
-      // .catch((err) => {
-      //   next(err)
-      // })
+          
 })
 
 router.get('/profile', (req, res, next) => {
